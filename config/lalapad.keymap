@@ -178,6 +178,43 @@
             require-prior-idle-ms = <125>;
             bindings = <&kp>, <&kp>;
         };
+
+        brightness_control: brightness_control {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "BRIGHTNESS_CONTROL";
+            #sensor-binding-cells = <0>;
+            bindings = <&brightness_increment>, <&brightness_decrement>;
+        };
+    };
+
+    macros {
+        brightness_increment: brightness_increment {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_ALT>,
+                <&macro_tap>,
+                <&kp F2>,
+                <&macro_release>,
+                <&kp LEFT_ALT>;
+
+            label = "BRIGHTNESS_INCREMENT";
+        };
+
+        brightness_decrement: brightness_decrement {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_ALT>,
+                <&macro_tap>,
+                <&kp F1>,
+                <&macro_release>,
+                <&kp LEFT_ALT>;
+
+            label = "BRIGHTNESS_DECREMENT";
+        };
     };
 
     keymap {
@@ -198,7 +235,7 @@
 
         SECONDARY_LAYER {
             display-name = "secondary_layer";
-            sensor-bindings = <&scroll_left_right>, <&scroll_left_right>;
+            sensor-bindings = <&scroll_left_right>, <&brightness_control>;
 
             bindings = <
 &kp TILDE  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5  &kp PAGE_UP    &kp PRINTSCREEN  &kp KP_SLASH     &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9
