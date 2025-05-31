@@ -183,7 +183,7 @@
             compatible = "zmk,behavior-sensor-rotate";
             label = "BRIGHTNESS_CONTROL";
             #sensor-binding-cells = <0>;
-            bindings = <&brightness_increment>, <&brightness_decrement>;
+            bindings = <&brightness_decrement>, <&brightness_increment>;
         };
     };
 
