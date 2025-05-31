@@ -224,6 +224,36 @@
 
             label = "BRIGHTNESS_DECREMENT";
         };
+
+        ng_on: ng_on {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap>, <&kp LANGUAGE_1 &to NAGINATA>;
+        };
+
+        ng_off: ng_off {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap>, <&kp LANGUAGE_2 &to BASE>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        combo_ng_on {
+            timeout-ms = <300>;
+            key-positions = <18 19>;
+            bindings = <&ng_on>;
+            layers = <0 1>; // default: <0>
+        };
+
+        combo_ng_off {
+            timeout-ms = <300>;
+            key-positions = <16 17>;
+            bindings = <&ng_off>;
+            layers = <0 1>;
+        };
     };
 
     keymap {
