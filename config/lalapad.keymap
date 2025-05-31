@@ -15,17 +15,6 @@
 #define MOUSE_L_LAYER   7
 #define SCROLL_L_LAYER  8
 
-/ {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        tri_layer {
-            if-layers = <2 3>;
-            then-layer = <4>;
-        };
-    };
-};
-
 // Mouse Scroll Value
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
@@ -73,6 +62,17 @@
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
             <&zip_scroll_scaler 1 6>;
+    };
+};
+
+/ {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        tri_layer {
+            if-layers = <2 3>;
+            then-layer = <4>;
+        };
     };
 };
 
